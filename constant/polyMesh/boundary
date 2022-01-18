@@ -1,0 +1,75 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.4.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+6
+(
+    lower
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          6400;
+        startFace       945600;
+    }
+    upper
+    {
+        type            patch;
+        nFaces          6400;
+        startFace       952000;
+    }
+    west
+    {
+        type            cyclic;
+        inGroups        1(cyclic);
+        nFaces          4000;
+        startFace       958400;
+        matchTolerance  0.0001;
+        transform       unknown;
+        neighbourPatch  east;
+    }
+    east
+    {
+        type            cyclic;
+        inGroups        1(cyclic);
+        nFaces          4000;
+        startFace       962400;
+        matchTolerance  0.0001;
+        transform       unknown;
+        neighbourPatch  west;
+    }
+    north
+    {
+        type            cyclic;
+        inGroups        1(cyclic);
+        nFaces          4000;
+        startFace       966400;
+        matchTolerance  0.0001;
+        transform       unknown;
+        neighbourPatch  south;
+    }
+    south
+    {
+        type            cyclic;
+        inGroups        1(cyclic);
+        nFaces          4000;
+        startFace       970400;
+        matchTolerance  0.0001;
+        transform       unknown;
+        neighbourPatch  north;
+    }
+)
+
+// ************************************************************************* //
